@@ -46,7 +46,7 @@ print_char_wrapper(wasm_exec_env_t exec_env, int ch)
             high_surrogate = -1;
         }
     }
-    print("%c", ch);
+    print(ch);
 }
 
 #define REG_NATIVE_FUNC(func_name, signature) \
