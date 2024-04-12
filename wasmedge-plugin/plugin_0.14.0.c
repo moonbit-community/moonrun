@@ -22,13 +22,19 @@
 
 WasmEdge_Result print(int ch) {
   if (ch <= 0x7F) {
-    printf("%c", ch);
+    putchar(ch);
   } else if (ch <= 0x7FF) {
-    printf("%c%c", ch >> 6 & 0x1F | 0xC0, ch & 0x3F | 0x80);
+    putchar(ch >> 6 & 0x1F | 0xC0);
+    putchar(ch & 0x3F | 0x80);
   } else if (ch <= 0xFFFF) {
-    printf("%c%c%c", ch >> 12 & 0x0F | 0xE0, ch >> 6 & 0x3F | 0x80, ch & 0x3F | 0x80);
+    putchar(ch >> 12 & 0x0F | 0xE0);
+    putchar(ch >> 6 & 0x3F | 0x80);
+    putchar(ch & 0x3F | 0x80);
   } else if (ch <= 0x10FFFF) {
-    printf("%c%c%c%c", ch >> 18 & 0x07 | 0xF0, ch >> 12 & 0x3F | 0x80, ch >> 6 & 0x3F | 0x80, ch & 0x3F | 0x80);
+    putchar(ch >> 18 & 0x07 | 0xF0);
+    putchar(ch >> 12 & 0x3F | 0x80);
+    putchar(ch >> 6 & 0x3F | 0x80);
+    putchar(ch & 0x3F | 0x80);
   } else {
     return WasmEdge_Result_Fail;
   }
