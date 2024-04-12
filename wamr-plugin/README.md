@@ -7,7 +7,7 @@ This folder contains the source code to build a plugin for [WAMR](https://github
 A possible command to build it is:
 
 ```bash
-clang pluign.c -shared -o libmoon_run.dylib
+clang pluign.c -shared -o libmoon_run.dylib -undefined dynamic_lookup
 ```
 
 ## Run
@@ -15,5 +15,5 @@ clang pluign.c -shared -o libmoon_run.dylib
 Pass the file with the `--native-lib` command as:
 
 ```bash
-iwasm --native-lib=libmain_test.dylib main.wasm
+iwasm --native-lib=libmoon_run.dylib main.wasm
 ```
