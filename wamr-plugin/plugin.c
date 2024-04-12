@@ -49,11 +49,8 @@ print_char_wrapper(wasm_exec_env_t exec_env, int ch)
     print(ch);
 }
 
-#define REG_NATIVE_FUNC(func_name, signature) \
-    { #func_name, func_name##_wrapper, signature, NULL }
-
 static NativeSymbol native_symbols[] = {
-    REG_NATIVE_FUNC(print_char, "(i)")
+    EXPORT_WASM_API_WITH_SIG(print_char, "(i)")
 };
 
 uint32_t
