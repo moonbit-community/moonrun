@@ -40,11 +40,10 @@ print_char_wrapper(wasm_exec_env_t exec_env, int ch)
     if (ch >= 0xD800 && ch <= 0xDBFF) {
         high_surrogate = ch - 0xD800;
         return;
-    } else {
-        if (high_surrogate != -1) {
-            ch = (high_surrogate << 10) + ch - 0xDC00 + 0x10000;
-            high_surrogate = -1;
-        }
+    }
+    if (high_surrogate != -1) {
+        ch = (high_surrogate << 10) + ch - 0xDC00 + 0x10000;
+        high_surrogate = -1;
     }
     print(ch);
 }
