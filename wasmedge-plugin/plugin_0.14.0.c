@@ -16,10 +16,6 @@
 #include <stdio.h>
 #include <wasmedge/wasmedge.h>
 
-#include <unistd.h>
-#include <stdio.h>
-#include <wasmedge/wasmedge.h>
-
 WasmEdge_Result print(int ch) {
   if (ch <= 0x7F) {
     putchar(ch);
